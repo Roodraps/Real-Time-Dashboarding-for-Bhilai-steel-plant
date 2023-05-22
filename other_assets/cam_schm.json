@@ -1,0 +1,17 @@
+{
+    "cam_id": "5asd55as5",
+    "cam_name": "thermal_cam_sony_inc",
+    "cam_type": "thermal",
+    "cam_zone": "brm_stand_16",
+    "usr_note": "This camera is for xyz purpose",
+    "specs": {
+        "sensor_technology": "CMOS",
+        "supported_interface": "GigE Vision",
+        "spectrum_capability": "Visible (400-700 nm), Near Infrared (700-1000 nm)",
+        "spectrum": "MONO/NIR",
+        "pixel_size": "4.8 µm",
+        "resolution": "5120 x 5120",
+        "max_frame_rate": "51fps",
+        "vendor": "Sony Visual Imaging Solutions"
+    }
+}

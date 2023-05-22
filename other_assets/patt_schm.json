@@ -1,0 +1,24 @@
+{
+	"patt_id": "9b9t2t5f",
+	"patt_name": "gas_snsr_ada_inc",
+	"patt_type": "Gas Sensor",
+	"patt_note": "This sensor is for xyz purpose",
+	"patterns":
+		{
+			"by_senors": 
+            [
+                {
+                    "snsr_id": "56sd65363",
+                    "snsr_def_th": "55.45455956",
+                    "snsr_rec_th": "89.56556565"
+                },
+                {
+                    "snsr_id": "9sd8ee5w2",
+                    "snsr__defth": "95.14245544",
+                    "snsr_rec_th": "89.56556565"
+                }
+            ]
+		},
+    "patt_time_at": "1641062400",
+    "patt_time_till": "1641062700"
+}

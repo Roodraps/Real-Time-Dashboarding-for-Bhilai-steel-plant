@@ -1,0 +1,17 @@
+{
+    "snsr_id": "9bot2tsf",
+    "snsr_name": "gas_snsr_ada_inc",
+    "snsr_type": "Gas Sensor",
+    "snsr_zone": "brm_stand_16",
+    "snsr_note": "This sensor is for xyz purpose",
+    "specs":
+        {
+            "communication_interface": "I2C/PLC/OPC",
+            "measuring _range": "1 lux to 65535 lux",
+            "precision": "±(50+5% reading)",
+            "operating voltage": "4.5 ~ 20",
+            "operating condition": "10℃~+50℃; 0~95%RH (non-condensing)",
+            "delay time": "Default 8S + -30% (can be customized)",
+            "vendor": "Adafruit"
+        }
+}

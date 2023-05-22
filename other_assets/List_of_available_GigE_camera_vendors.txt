@@ -1,0 +1,51 @@
+List of some vendors which supplies and compliants with the GigE vision standards
+
+A&B Software
+Adimec
+ADLINK Technology, Inc.
+Allied Vision
+AT - Automation Technology GmbH
+VAL DATA CORPORATION
+Balluff GmbH   
+Basler AG
+Baumer Optronic GmbH
+Beckhoff Automation GmbH &amp; Co. KG        
+Chromasens GmbH   
+Cognex Corporation     
+Critical Link LLC     
+Deutsches Elektronen-Synchrotron DESY     
+DIAS Infrared GmbH       
+Emergent Vision Technologies Inc. 
+Euresys 
+Flexible Vision 
+Hitachi Kokusai Electric America Ltd.   
+IDS Imaging Development Systems, Inc.  
+IMI TECHNOLOGY CO., LTD.   
+Imperx, Inc. 
+JAI    
+Kithara Software GmbH    
+Lucid Vision Labs     
+MACNICA, Inc.       
+MathWorks
+MATRIX VISION GmbH     
+Matrox Imaging
+NET USA, Inc.     
+New Infrared Technologies     
+OKI IDS Co. Ltd.
+OMRON Automation - Americas     
+Phase 1 Technology Corp.    
+Pleora Technologies      
+Roboception GmbH
+Rochester Imaging Technology Corporation
+Saber1 Technologies LLC
+Sensor To Image GmbH
+Sony Visual Imaging Solutions
+Specim, Spectral Imaging Ltd.
+STEMMER IMAGING AG
+SVS-VISTEK GmbH
+Teledyne DALSA
+Teledyne FLIR
+The Imaging Source LLC
+Toshiba Teli Corporation
+VATICS INC.
+Vieworks Co., Ltd.

@@ -1,0 +1,90 @@
+// Schema design for our Time Series DataBase (TSDB)
+
+// Table (raw_feeds) for our raw video feeds under database data_feeds
+Table data_feeds.raw_feeds {
+  feed_id integer(8) [unique, not null, increment, primary key, note: 'An inreamental integer value']
+  title varchar(255) [unique, not null, note: 'file_name of the video from /data/raw']
+  start_time unixtime [not null, note: 'A unixtime stamp of start time']
+  end_time unixtime [not null, note: 'A unixtime of end time']
+  vid_path varchar(255) [not null, note: 'Path of that video feed']
+  from_cam varchar(255) [not null, ref: > cameras.cams.cam_id, note: 'The camera which it was taken from']
+}
+
+// Table (cal_feeds) for our caliberated video feeds under database data_feeds
+Table data_feeds.cal_feeds {
+  feed_id integer(8) [unique, not null, increment, primary key, note: 'An inreamental integer value']
+  title varchar(255) [unique, not null, note: 'file_name of the video from /data/raw']
+  start_time unixtime [not null, note: 'A unixtime stamp of start time']
+  end_time unixtime [not null, note: 'A unixtime of end time']
+  vid_path varchar(255) [not null, note: 'Path of that video feed']
+  cal_from varchar(255) [not null, ref: > data_feeds.raw_feeds.feed_id, note: 'The raw video file which it was caliberate from']
+  from_cam varchar(255) [not null, ref: > cameras.cams.cam_id, note: 'The camera which it was taken from']
+  from_snsr varchar(255) [not null, ref: > snsrs.sensors.snsr_id, note: 'The sensor which recorded the value']
+}
+
+// Table (raw_feeds) which is archived and in database arch_feeds
+Table arch_feeds.raw_feeds {
+  feed_id integer(8) [unique, not null, increment, primary key, note: 'An inreamental integer value']
+  title varchar(255) [unique, not null, note: 'file_name of the video from /data/raw']
+  start_time unixtime [not null, note: 'A unixtime stamp of start time']
+  end_time unixtime [not null, note: 'A unixtime of end time']
+  vid_path varchar(255) [not null, note: 'Path of that video feed']
+  from_cam varchar(255) [not null, ref: > cameras.cams.cam_id, note: 'The camera which it was taken from']
+}
+
+// Table (cal_feeds) which is archived and in database arch_feeds
+Table arch_feeds.cal_feeds {
+  feed_id integer(8) [unique, not null, increment, primary key, note: 'An inreamental integer value']
+  title varchar(255) [unique, not null, note: 'file_name of the video from /data/raw']
+  start_time unixtime [not null, note: 'A unixtime stamp of start time']
+  end_time unixtime [not null, note: 'A unixtime of end time']
+  vid_path varchar(255) [not null, note: 'Path of that video feed']
+  cal_from varchar(255) [not null, ref: > arch_feeds.raw_feeds.feed_id, note: 'The raw video file which it was caliberate from']
+  from_cam varchar(255) [not null, ref: > cameras.cams.cam_id, note: 'The camera which it was taken from']
+  from_snsr varchar(255) [not null, ref: > snsrs.sensors.snsr_id, note: 'The sensor which recorded the value']
+}
+
+// Table (sensors) which will contain all the records of available sensors
+Table snsrs.sensors {
+  snsr_id integer(8) [unique, not null, increment, primary key, note: 'The ID of the sensor']
+  snsr_name varchar(255) [unique, not null, note: 'The name of the sensor']
+  snsr_zone varchar(255) [not null, note: 'The zone which the sensor belong to']
+  snsr_type varchar(255) [not null, note: 'The type of the sensor']
+  snr_usr_note varchar (255) [note: 'Any saved note or instruction for user']
+}
+
+// Table (data) which will contain the recorded data of sensors
+Table snsrs.data {
+  snsr_id integer (8) [unique, not null, increment, primary key, ref: > snsrs.sensors.snsr_id, note: 'The ID of the sensor']
+  snsr_timestamp unixtime [not null, note: 'The timestamp of recorded sensor value']
+  snsr_value float8 [not null, note: 'The recorded value of sensor']
+}
+
+// Table (cams) which will contain all the available cameras
+Table cameras.cams {
+  cam_id integer(8) [unique, primary key, note: 'The ID of the camera']
+  cam_name varchar(255) [unique, not null, note: 'The name of the camera']
+  cam_zone varchar(255) [not null, note: 'The zone name which the camera belong to']
+  cam_type varchar(255) [not null, note: 'The type of the camera']
+  cam_usr_note varchar(255) [note: 'Any saved note or instruction for user']
+}
+
+// Table (events) which will contain all the pre-defined events and their thresholds w.r.t to the sensor.
+// I wonder if we even need this table because it seems like Kapacitor have these tools to provide based 
+// on the defined threshold value from the database records from the sensor data.
+Table events.events {
+  event_id integer(8) [unique, primary key, note: 'The ID of the event']
+  event_name varchar(255) [unique, not null, note: 'The event name']
+  event_snsr_id varchar(255) [not null, ref: > snsrs.sensors.snsr_id, note: 'The sensor ID']
+  event_snsr_threshold float8 [not null, note: 'The threshold value for that sensor']
+  event_type varchar(255) [not null, note: 'The type of the event']
+  event_usr_note varchar(255) [note: 'Any saved note or instruction for user']
+}
+
+// Table (events_data) which will contain the important events the happend in past
+Table events.events_data {
+  event_id integer(8) [unique, primary key, ref: > events.events.event_id, note: 'The event ID from our pre-defined event']
+  event_crossed_thresshold_val float8 [not null, note: 'The croosed threshold value of the sensor']
+  event_start_timestamp unixtime [not null, note: 'The timestamp of when event started']
+  event_end_timestamp unixtime [not null, note: 'The timestamp of when event stopped or back to normal']
+}

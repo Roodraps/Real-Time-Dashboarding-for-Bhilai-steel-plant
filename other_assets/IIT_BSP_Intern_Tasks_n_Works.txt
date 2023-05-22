@@ -1,0 +1,47 @@
+Search for gige cameras under 25K
+
+	-- Video Steam -- Decode Linux client ---> processed by a script ---> Values loaded into the DB
+											     ---> Alerts/Events loaded into DB
+				---> Storage
+Use RSTP for now
+	-- Storage Manager
+		--> Front End for video retreival
+
+Learn to use influxdb client C#, Go, Python : Create DB tables, Load data, Query Data
+
+Storage design 
+OPC Client
+	-- OPC UA -- Decode Linux client ---> processed by a script ---> Values loaded into the DB
+											---> Alerts/Events loaded into DB
+
+Influxdb table design
+- Time Series Tables
+	- Sensor Data :  Time Stamp, Sensor Name, Values.
+			  :  Time Stamp, Calculated Field, Values 
+	- Video Streams Data
+			 : Time stamp, Camera_Name, Calculated Field, Values
+	- Events
+			: Time stamp, Event Type, Event Location, Time Detected, Severity
+				Vibration 
+			: Sparks
+			: Bent Billets
+			: HMD Flickering
+
+	- Alerts : Northbound integration with SMS server, Email, Whatsapp etc.
+	
+	Query -- 
+
+	Visualization Dashboard
+
+Software Stack
+
+Video processing -- Python, OpenCV, C++ could be migrated to C, C# .. 
+Sensor Data -- Python, C++
+OPC Client 
+
+c++ and Python integration wherever possible.
+
+1. Take the sample PLC data (sensors)
+2. Video sample
+
+
